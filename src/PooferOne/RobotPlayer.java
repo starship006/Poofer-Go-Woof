@@ -1,7 +1,7 @@
-package examplefuncsplayer;
+package PooferOne;
 
-import PooferOne.*;
 import battlecode.common.*;
+
 import java.util.Random;
 
 /**
@@ -70,13 +70,13 @@ public strictfp class RobotPlayer {
                 // use different strategies on different robots. If you wish, you are free to rewrite
                 // this into a different control structure!
                 switch (rc.getType()) {
-                    case ARCHON:     runArchon(rc);  break;
-                    case MINER:      runMiner(rc);   break;
-                    case SOLDIER:    runSoldier(rc); break;
-                    case LABORATORY: // Examplefuncsplayer doesn't use any of these robot types below.
-                    case WATCHTOWER: // You might want to give them a try!
-                    case BUILDER:
-                    case SAGE:       break;
+                    case ARCHON:     ArchonStrategy.runArchon(rc);  break;
+                    case MINER:      MinerStrategy.runMiner(rc);   break;
+                    case SOLDIER:    SoldierStrategy.runSoldier(rc); break;
+                    case LABORATORY: LaboratoryStrategy.runLaboratory(rc); break;// Examplefuncsplayer doesn't use any of these robot types below.
+                    case WATCHTOWER: WatchtowerStrategy.runWatchtower(rc); break;// You might want to give them a try!
+                    case BUILDER:    BuilderStrategy.runBuilder(rc); break;
+                    case SAGE:       SageStrategy.runSage(rc); break;
                 }
             } catch (GameActionException e) {
                 // Oh no! It looks like we did something illegal in the Battlecode world. You should
