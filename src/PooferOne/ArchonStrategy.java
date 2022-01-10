@@ -13,7 +13,7 @@ public class ArchonStrategy {
     static int minerCount = 0;
     static int builderCount = 0;
 
-    static final int AMOUNT_OF_CHECK_ROUNDS_FOR_TARGET = 200;
+    static final int AMOUNT_OF_CHECK_ROUNDS_FOR_TARGET = 200; // need to replace later
 
 
     static void runArchon(RobotController rc) throws GameActionException {
