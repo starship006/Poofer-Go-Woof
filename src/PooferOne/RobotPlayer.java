@@ -25,9 +25,11 @@ public strictfp class RobotPlayer {
      * we get the same sequence of numbers every time this code is run. This is very useful for debugging!
      */
     static final Random rng = new Random(6147);
+    static int MapWidth = 0;
+    static int MapHeight = 0;
 
     /** Array containing all the possible movement directions. */
-    static final Direction[] directions = {
+    public static final Direction[] directions = {
         Direction.NORTH,
         Direction.NORTHEAST,
         Direction.EAST,
@@ -51,6 +53,8 @@ public strictfp class RobotPlayer {
         // Hello world! Standard output is very useful for debugging.
         // Everything you say here will be directly viewable in your terminal when you run a match!
         System.out.println("I'm a " + rc.getType() + " and I just got created! I have health " + rc.getHealth());
+        MapHeight = rc.getMapHeight();
+        MapWidth = rc.getMapWidth();
 
         // You can also use indicators to save debug notes in replays.
         rc.setIndicatorString("Hello world!");
@@ -61,7 +65,7 @@ public strictfp class RobotPlayer {
             // loop, we call Clock.yield(), signifying that we've done everything we want to do.
 
             turnCount += 1;  // We have now been alive for one more turn!
-            System.out.println("Age: " + turnCount + "; Location: " + rc.getLocation());
+            //System.out.println("Age: " + turnCount + "; Location: " + rc.getLocation());
 
             // Try/catch blocks stop unhandled exceptions, which cause your robot to explode.
             try {
@@ -149,7 +153,7 @@ public strictfp class RobotPlayer {
         Direction dir = directions[rng.nextInt(directions.length)];
         if (rc.canMove(dir)) {
             rc.move(dir);
-            System.out.println("I moved!");
+            //System.out.println("I moved!");
         }
     }
 
@@ -173,7 +177,7 @@ public strictfp class RobotPlayer {
         Direction dir = directions[rng.nextInt(directions.length)];
         if (rc.canMove(dir)) {
             rc.move(dir);
-            System.out.println("I moved!");
+            //System.out.println("I moved!");
         }
     }
 }
