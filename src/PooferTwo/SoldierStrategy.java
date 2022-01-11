@@ -25,34 +25,7 @@ public class SoldierStrategy {
         //Soldier Find Danger Mode
         //init code
         if(exploreDir == null){
-            //find quadrant
-            int MapXCenter = rc.getMapWidth() / 2;
-            int MapYCenter = rc.getMapHeight() / 2;
-            int SpawnX = rc.getLocation().x;
-            int SpawnY = rc.getLocation().y;
-
-            if(SpawnY >= MapYCenter && SpawnX >= MapXCenter){
-                //top right
-                exploreDir = Direction.SOUTHWEST;
-            }else if(SpawnY >= MapYCenter && SpawnX <= MapXCenter){
-                //top left
-                exploreDir = Direction.SOUTHEAST;
-            }else if(SpawnY <= MapYCenter && SpawnX >= MapXCenter){
-                //bottom right
-                exploreDir = Direction.NORTHWEST;
-            }else{
-                //bottom left
-                exploreDir = Direction.NORTHEAST;
-            }
-
-            RobotPlayer.rng.setSeed(rc.getID());
-            int modifier = RobotPlayer.rng.nextInt(3); // 3 options to shift left, right, and stay
-            if (modifier == 0 ){
-                exploreDir = exploreDir.rotateLeft();
-            }else if(modifier == 1){
-                exploreDir = exploreDir.rotateRight();
-            }
-            rc.setIndicatorString(exploreDir.toString());
+            GenerateExplorationDirection(rc);
         }
 
         //sense environment
@@ -71,6 +44,10 @@ public class SoldierStrategy {
                 rc.writeSharedArray(0,2); //signal archon to read
                 rc.writeSharedArray(4, enemies[0].location.y * 100 + enemies[0].location.x); //signal enemy archon location
             }
+        }
+        if (enemies.length > AMOUNT_OF_CHECK_ROUNDS_FOR_TARGET - 1){
+            rc.writeSharedArray(3, rc.getLocation().y * 100 + rc.getLocation().x); //signal archon to read
+
         }
 
 
@@ -98,13 +75,20 @@ public class SoldierStrategy {
 
         //read array and update target locations if needed
         if (rc.getRoundNum() % AMOUNT_OF_CHECK_ROUNDS_FOR_TARGET == 0){
-            int position = rc.readSharedArray(3); // if there was enemies detected
+            int position = rc.readSharedArray(4); //if there was an archon detected
             if (position > 0){
                 targetLocation = new MapLocation(position % 100, position/100);
-            }
-            position = rc.readSharedArray(4); //if there was an archon detected
-            if (position > 0){
-                targetLocation = new MapLocation(position % 100, position/100);
+                rc.setIndicatorString(String.valueOf(position));
+            }else{
+                position = rc.readSharedArray(3); // if there was enemies detected
+
+                if(position>0){
+                    targetLocation = new MapLocation(position % 100, position/100);
+                    rc.setIndicatorString(String.valueOf(position));
+                }else{
+                    targetLocation = null;
+                    GenerateExplorationDirection(rc);
+                }
             }
         }
     }
@@ -130,7 +114,37 @@ public class SoldierStrategy {
 
     }
 
+    static void GenerateExplorationDirection(RobotController rc) throws GameActionException{
+        //find quadrant
+        int MapXCenter = rc.getMapWidth() / 2;
+        int MapYCenter = rc.getMapHeight() / 2;
+        int SpawnX = rc.getLocation().x;
+        int SpawnY = rc.getLocation().y;
 
+        if(SpawnY >= MapYCenter && SpawnX >= MapXCenter){
+            //top right
+            exploreDir = Direction.SOUTHWEST;
+        }else if(SpawnY >= MapYCenter && SpawnX <= MapXCenter){
+            //top left
+            exploreDir = Direction.SOUTHEAST;
+        }else if(SpawnY <= MapYCenter && SpawnX >= MapXCenter){
+            //bottom right
+            exploreDir = Direction.NORTHWEST;
+        }else{
+            //bottom left
+            exploreDir = Direction.NORTHEAST;
+        }
+
+        RobotPlayer.rng.setSeed(rc.getID());
+        int modifier = RobotPlayer.rng.nextInt(3); // 3 options to shift left, right, and stay
+        if (modifier == 0 ){
+            exploreDir = exploreDir.rotateLeft();
+        }else if(modifier == 1){
+            exploreDir = exploreDir.rotateRight();
+        }
+        rc.setIndicatorString(exploreDir.toString());
+
+    }
 
 
     //OUT OF USE

@@ -50,10 +50,7 @@ public class MinerStrategy {
             }
         }
         if (targetLocation!=null){
-            Direction toMove = me.directionTo(targetLocation);
-            if(rc.canMove(toMove)){
-                rc.move(toMove);
-            }
+            MovementOptions.pathTowards(rc, targetLocation);
         }
 
         //go in exploration direction

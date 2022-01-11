@@ -16,6 +16,7 @@ public class ArchonStrategy {
     static final double RATIO_OF_SOLDIERS_TO_MINERS = 2;
 
     static int stage = 0; //0 early; 1 builder
+    static int lastRoundHealth = 1000;
 
 
     static void runArchon(RobotController rc) throws GameActionException {
@@ -61,6 +62,10 @@ public class ArchonStrategy {
         if ((rc.getRoundNum() - 1) % AMOUNT_OF_CHECK_ROUNDS_FOR_TARGET == 0){
             rc.writeSharedArray(3,0);
             rc.writeSharedArray(4,0);
+        }
+        if(rc.getHealth() != lastRoundHealth){
+            lastRoundHealth = rc.getHealth();
+            buildOnTopOfLowRubble(rc, RobotType.SOLDIER);
         }
 
 
