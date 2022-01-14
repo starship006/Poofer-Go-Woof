@@ -1,4 +1,4 @@
-package PooferThree;
+package PooferFour;
 
 public class SharedConstants {
     public static int AMOUNT_OF_CHECK_ROUNDS_FOR_TARGET = 100;

@@ -1,9 +1,9 @@
-package PooferThree;
+package PooferFour;
 
 import battlecode.common.*;
 
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.ArrayList; // import the ArrayList class
 
 public class ArchonStrategy {
 

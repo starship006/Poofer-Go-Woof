@@ -1,4 +1,4 @@
-package PooferThree;
+package PooferFour;
 
 import battlecode.common.*;
 // Java code to illustrate String
@@ -49,7 +49,7 @@ public class SoldierStrategy {
                 lowestHealth = enemy.getHealth();
             }
             if (enemy.getType() == RobotType.ARCHON){
-                updateSharedInformation(rc,SharedConstants.ARCHON_SPOTTED_LOCATION_INDEX,enemies[0].location.y * 100 + enemies[0].location.x);
+                updateSharedInformation(rc, SharedConstants.ARCHON_SPOTTED_LOCATION_INDEX,enemies[0].location.y * 100 + enemies[0].location.x);
             }
         }
         if (enemies.length > AMOUNT_OF_ENEMIES_TO_BE_A_TARGET - 1){

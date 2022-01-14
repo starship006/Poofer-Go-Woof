@@ -1,4 +1,4 @@
-package PooferTwo;
+package PooferFour;
 
 import battlecode.common.*;
 
@@ -57,7 +57,7 @@ public strictfp class RobotPlayer {
         MapWidth = rc.getMapWidth();
 
         // You can also use indicators to save debug notes in replays.
-        rc.setIndicatorString("Hello world!");
+        //rc.setIndicatorString("Hello world!");
 
         while (true) {
             // This code runs during the entire lifespan of the robot, which is why it is in an infinite
