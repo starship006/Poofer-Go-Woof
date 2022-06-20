@@ -1,35 +1,9 @@
-# Battlecode 2022 Scaffold
+# PooferGoWoof
 
-This is the Battlecode 2022 scaffold, containing an `examplefuncsplayer`. Read https://play.battlecode.org/getting-started!
+This was starship006's submission for the Battlecode 2022 scaffold! While the robot may look very simplistic... well, it kinda is. It wasn't the most complex, as I developed this robot as a quick one-week sprint to try to put out any robot (I was too busy for this competition but I wanted to do _something_)
 
-### Project Structure
+I was very much pleasantly surprised at how it perfromed - it ended up at exactly the 50th percentile of all competitors at the end of the competition, _even though I stopped with a couple weeks left to go!_
 
-- `README.md`
-    This file.
-- `build.gradle`
-    The Gradle build file used to build and run players.
-- `src/`
-    Player source code.
-- `test/`
-    Player test code.
-- `client/`
-    Contains the client. The proper executable can be found in this folder (don't move this!)
-- `build/`
-    Contains compiled player code and other artifacts of the build process. Can be safely ignored.
-- `matches/`
-    The output folder for match files.
-- `maps/`
-    The default folder for custom maps.
-- `gradlew`, `gradlew.bat`
-    The Unix (OS X/Linux) and Windows versions, respectively, of the Gradle wrapper. These are nifty scripts that you can execute in a terminal to run the Gradle build tasks of this project. If you aren't planning to do command line development, these can be safely ignored.
-- `gradle/`
-    Contains files used by the Gradle wrapper scripts. Can be safely ignored.
+The robot taught me the absolute importance of organized code. It was spaghetti code at its finest, and the slight change to one thing would probably break all my robots. Expanding this robot would barely be feasable and would probably require a significant amount of refactoring of the original code.
 
-
-### Useful Commands
-
-- `./gradlew run`
-    Runs a game with the settings in gradle.properties
-- `./gradlew update`
-    Update to the newest version! Run every so often
-
+But hey, for my first attempt at a competition, it was enthralling! Totally gonna do it again next year, with a bit more focus on producing a good robot :)
